@@ -1,0 +1,8 @@
+/usr/bin/extreme_private_masternode-cli		--	gen_context(system_u:object_r:extreme_private_masternode_exec_t,s0)
+/usr/sbin/extreme_private_masternoded		--	gen_context(system_u:object_r:extreme_private_masternode_exec_t,s0)
+/usr/lib(64)?/extreme_private_masternode/extreme_private_masternoded		--	gen_context(system_u:object_r:extreme_private_masternode_exec_t,s0)
+
+/etc/extreme_private_masternode(/.*)?		gen_context(system_u:object_r:extreme_private_masternode_conf_t,s0)
+/var/lib/extreme_private_masternode(/.*)?		gen_context(system_u:object_r:extreme_private_masternode_var_lib_t,s0)
+
+(/var)?/run/extreme_private_masternoded(/.*)?   gen_context(system_u:object_r:extreme_private_masternode_var_run_t,s0)

@@ -1,0 +1,33 @@
+# /etc/conf.d/extreme_private_masternoded: config file for /etc/init.d/extreme_private_masternoded
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/extreme_private_masternode/extreme_private_masternode.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/extreme_private_masternoded"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/extreme_private_masternoded.pid"
+
+# Where to write extreme_private_masternoded data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/extreme_private_masternoded"
+
+# User and group to own extreme_private_masternoded process
+#BITCOIND_USER="extreme_private_masternode"
+#BITCOIND_GROUP="extreme_private_masternode"
+
+# Path to extreme_private_masternoded executable
+#BITCOIND_BIN="/usr/bin/extreme_private_masternoded"
+
+# Nice value to run extreme_private_masternoded under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#BITCOIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for bitcoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+BITCOIND_SIGTERM_TIMEOUT=60

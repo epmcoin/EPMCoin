@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Extreme Private Masternode Coin
+Comment=EXTREME_PRIVATE_MASTERNODE P2P Cryptocurrency
+Comment[fr]=EXTREME_PRIVATE_MASTERNODE, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=EXTREME_PRIVATE_MASTERNODE, eşten eşe kriptografik sanal para birimi
+Exec=extreme_private_masternode-qt %u
+Terminal=false
+Type=Application
+Icon=extreme_private_masternode128
+MimeType=x-scheme-handler/extreme_private_masternode;
+Categories=Office;Finance;
+StartupWMClass=Extreme_Private_Masternode-qt

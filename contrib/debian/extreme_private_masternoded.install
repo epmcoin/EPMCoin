@@ -1,0 +1,3 @@
+usr/local/bin/extreme_private_masternoded usr/bin
+usr/local/bin/extreme_private_masternode-cli usr/bin
+debian/examples/extreme_private_masternode.conf etc/extreme_private_masternode

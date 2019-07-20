@@ -1,0 +1,81 @@
+policy_module(extreme_private_masternode, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type extreme_private_masternode_t;
+type extreme_private_masternode_exec_t;
+init_daemon_domain(extreme_private_masternode_t, extreme_private_masternode_exec_t)
+
+permissive extreme_private_masternode_t;
+
+type extreme_private_masternode_initrc_exec_t;
+init_script_file(extreme_private_masternode_initrc_exec_t)
+
+type extreme_private_masternode_conf_t;
+files_type(extreme_private_masternode_conf_t)
+
+type extreme_private_masternode_var_lib_t;
+files_type(extreme_private_masternode_var_lib_t)
+
+type extreme_private_masternode_var_run_t;
+files_type(extreme_private_masternode_var_run_t)
+
+type extreme_private_masternode_port_t;
+corenet_port(extreme_private_masternode_port_t)
+
+########################################
+#
+# extreme_private_masternode local policy
+#
+allow extreme_private_masternode_t self:process { fork };
+
+allow extreme_private_masternode_t self:fifo_file rw_fifo_file_perms;
+allow extreme_private_masternode_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(extreme_private_masternode_t, extreme_private_masternode_conf_t, extreme_private_masternode_conf_t)
+manage_files_pattern(extreme_private_masternode_t, extreme_private_masternode_conf_t, extreme_private_masternode_conf_t)
+
+manage_dirs_pattern(extreme_private_masternode_t, extreme_private_masternode_var_lib_t, extreme_private_masternode_var_lib_t)
+manage_files_pattern(extreme_private_masternode_t, extreme_private_masternode_var_lib_t, extreme_private_masternode_var_lib_t)
+files_var_lib_filetrans(extreme_private_masternode_t, extreme_private_masternode_var_lib_t, { dir file })
+
+manage_dirs_pattern(extreme_private_masternode_t, extreme_private_masternode_var_run_t, extreme_private_masternode_var_run_t)
+manage_files_pattern(extreme_private_masternode_t, extreme_private_masternode_var_run_t, extreme_private_masternode_var_run_t)
+
+sysnet_dns_name_resolve(extreme_private_masternode_t)
+corenet_all_recvfrom_unlabeled(extreme_private_masternode_t)
+
+allow extreme_private_masternode_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(extreme_private_masternode_t)
+corenet_tcp_sendrecv_generic_node(extreme_private_masternode_t)
+corenet_tcp_sendrecv_all_ports(extreme_private_masternode_t)
+corenet_tcp_bind_generic_node(extreme_private_masternode_t)
+
+gen_require(`
+    type extreme_private_masternode_port_t;
+')
+allow extreme_private_masternode_t extreme_private_masternode_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type extreme_private_masternode_port_t;
+')
+allow extreme_private_masternode_t extreme_private_masternode_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(extreme_private_masternode_t)
+
+files_read_etc_files(extreme_private_masternode_t)
+
+miscfiles_read_localization(extreme_private_masternode_t)
+
+sysnet_dns_name_resolve(extreme_private_masternode_t)
+
+allow extreme_private_masternode_t extreme_private_masternode_exec_t:file execute_no_trans;
+allow extreme_private_masternode_t self:process setsched;
+corecmd_exec_ls(extreme_private_masternode_t)
+corenet_tcp_connect_http_port(extreme_private_masternode_t)
+dev_read_urand(extreme_private_masternode_t)
+fs_getattr_xattr_fs(extreme_private_masternode_t)
+kernel_read_system_state(extreme_private_masternode_t)

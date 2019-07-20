@@ -1,0 +1,6 @@
+usr/local/bin/extreme_private_masternode-qt usr/bin
+share/pixmaps/extreme_private_masternode32.xpm usr/share/pixmaps
+share/pixmaps/extreme_private_masternode16.xpm usr/share/pixmaps
+share/pixmaps/extreme_private_masternode128.png usr/share/pixmaps
+debian/extreme_private_masternode-qt.desktop usr/share/applications
+debian/extreme_private_masternode-qt.protocol usr/share/kde4/services/
